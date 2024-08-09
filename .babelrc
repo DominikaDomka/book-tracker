@@ -1,4 +1,6 @@
 {
   "presets": ["react-app"],
-  "plugins": []
+  "plugins": [
+    "@babel/plugin-proposal-private-property-in-object"
+  ]
 }
