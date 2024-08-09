@@ -1,24 +1,27 @@
+body, html, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: transparent; /* Ensure no background color is set */
+}
+
 .App {
   text-align: center;
-  background-color: transparent; /* Remove the background color */
+  background-color: transparent; /* Ensure the App component has no background */
 }
 
-.bookshelf {
-  width: 50%; /* Adjust as needed for the correct size */
-  margin: 0 auto; /* Center the bookshelf */
-  display: block;
+.App-header {
+  background-color: transparent; /* Remove background from header */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-.book-input {
-  margin: 20px auto;
-  padding: 10px;
-  font-size: 16px;
-  width: 80%;
-}
-
-button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
+.App-link {
+  color: #61dafb;
 }
