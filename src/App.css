@@ -1,24 +1,18 @@
-.input-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.Bookshelf {
+  text-align: center;
+}
+
+.Bookshelf-image {
+  width: 60%; /* Adjust size to fit your design */
+  max-width: 100%;
+  height: auto;
+}
+
+.Buttons {
   margin-top: 20px;
 }
 
-.input-container input {
-  margin: 5px;
-  padding: 10px;
-  font-size: 16px;
-}
-
-.input-container button {
-  margin-top: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.bookshelf {
-  width: 50%; /* Adjust the width as needed */
-  height: auto;
+input, button {
+  display: block;
+  margin: 10px auto;
 }
