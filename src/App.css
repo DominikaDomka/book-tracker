@@ -1,42 +1,24 @@
-body {
-  margin: 0;
-  padding: 0;
-  overflow: hidden; /* Prevents scrolling */
-}
-
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
-  background: transparent; /* Remove background color */
+  text-align: center;
+  background-color: transparent; /* Remove the background color */
 }
 
 .bookshelf {
-  width: 50vw; /* 50% of the viewport width */
-  max-width: 600px; /* Set a maximum width */
-  height: auto;
+  width: 50%; /* Adjust as needed for the correct size */
+  margin: 0 auto; /* Center the bookshelf */
+  display: block;
 }
 
-.controls {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
+.book-input {
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 16px;
+  width: 80%;
 }
 
 button {
+  margin: 10px;
   padding: 10px 20px;
-  margin: 5px;
   font-size: 16px;
   cursor: pointer;
-}
-
-input {
-  padding: 10px;
-  margin: 5px;
-  font-size: 16px;
-  width: 200px;
 }
