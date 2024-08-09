@@ -1,20 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
+import bookshelfImage from './bookshelf.jpg';
 
 function App() {
+  const [spineTitle, setSpineTitle] = useState('');
+  const [fullTitle, setFullTitle] = useState('');
+
+  const addBook = () => {
+    console.log('Add book:', spineTitle, fullTitle);
+  };
+
+  const pickStyle = () => {
+    console.log('Pick style');
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} className="Bookshelf-image" alt="Bookshelf" />
-        <h1>Book Tracker</h1>
-        {/* Your input fields and buttons here */}
-        <button>Add Book</button>
-        <button>Pick Style</button>
-        <div className="inputs">
-          <input type="text" placeholder="Spine Title" />
-          <input type="text" placeholder="Full Title" />
-        </div>
-      </header>
+      <img src={bookshelfImage} alt="Bookshelf" className="bookshelf" />
+      <div className="controls">
+        <input
+          type="text"
+          placeholder="Spine Title"
+          value={spineTitle}
+          onChange={(e) => setSpineTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="Full Title"
+          value={fullTitle}
+          onChange={(e) => setFullTitle(e.target.value)}
+        />
+        <button onClick={addBook}>Add Book</button>
+        <button onClick={pickStyle}>Pick Style</button>
+      </div>
     </div>
   );
 }
