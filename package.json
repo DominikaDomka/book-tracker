@@ -7,6 +7,7 @@
     "node": ">=14.0.0"
   },
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "core-js": "^3.38.0",
     "react": "^17.0.2",
     "react-dnd": "^16.0.1",
@@ -21,7 +22,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
-    "build": "CI=false react-scripts build",
+    "build": "CI=false BABEL_ENV=production babel-node node_modules/.bin/react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -51,7 +52,7 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.25.1",
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/node": "^7.22.19",
     "gh-pages": "^4.0.0"
   }
 }
