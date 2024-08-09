@@ -4,5 +4,5 @@
 
 [build.environment]
   NODE_ENV = "production"
-  NODE_VERSION = "16"
-  CI = "false"
+  # Remove or comment out the following line:
+  # NODE_OPTIONS = "--openssl-legacy-provider"
