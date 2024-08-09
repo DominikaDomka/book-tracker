@@ -2,21 +2,41 @@
   text-align: center;
 }
 
-.bookshelf {
-  width: 50%; /* Adjusted the width to make the bookshelf a bit larger */
-  margin: 0 auto; /* Center the bookshelf */
+.Bookshelf-image {
+  width: 50%; /* Adjust the size here */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.inputs {
+  margin-top: 20px;
+}
+
+.inputs input {
+  margin: 5px;
+  padding: 10px;
+  font-size: 1em;
 }
 
 button {
-  margin-top: 10px; /* Add space between the bookshelf and the buttons */
-}
-
-input {
-  margin-bottom: 10px; /* Add space below input fields */
-}
-
-button, input {
-  display: block;
-  margin-left: auto;
-  margin-right: auto; /* Center buttons and input fields */
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  background-color: #61dafb;
+  border: none;
+  border-radius: 5px;
+  color: white;
 }
