@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://dominikadomka.github.io/book-tracker",
   "dependencies": {
+    "core-js": "^3.38.0",
     "react": "^17.0.2",
     "react-dnd": "^16.0.1",
     "react-dnd-html5-backend": "^16.0.1",
@@ -21,7 +22,16 @@
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
-    "extends": "react-app"
+    "extends": "react-app",
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+      "requireConfigFile": false,
+      "babelOptions": {
+        "presets": [
+          "@babel/preset-react"
+        ]
+      }
+    }
   },
   "browserslist": {
     "production": [
@@ -36,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.25.1",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "gh-pages": "^4.0.0"
   }
