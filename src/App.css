@@ -3,25 +3,128 @@ body, html, #root {
   padding: 0;
   height: 100%;
   width: 100%;
-  background-color: transparent; /* Ensure no background color is set */
+  background-color: transparent;
 }
 
 .App {
   text-align: center;
-  background-color: transparent; /* Ensure the App component has no background */
-}
-
-.App-header {
-  background-color: transparent; /* Remove background from header */
+  background-color: transparent;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.App-link {
-  color: #61dafb;
+.bookshelf {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
 }
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.book-input {
+  margin: 0 5px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.add-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+
+.theme-buttons {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.theme-buttons button {
+  margin: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.theme-buttons button:hover {
+  background-color: #e0e0e0;
+}
+
+.bookshelf-default, .bookshelf-spooky, .bookshelf-fantasy, .bookshelf-soft, .bookshelf-colorful {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+.book {
+  width: 30px;
+  height: 150px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.book:hover {
+  transform: scale(1.05);
+}
+
+.spine {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  padding: 5px;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 100%;
+  color: transparent;
+  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.full-title {
+  display: none;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px;
+  border-radius: 3px;
+  font-size: 12px;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.book:hover .full-title {
+  display: block;
+}
+
+/* Theme-specific styles */
+.bookshelf-spooky .book { filter: sepia(100%) hue-rotate(200deg); }
+.bookshelf-fantasy .book { filter: hue-rotate(90deg) saturate(150%); }
+.bookshelf-soft .book { filter: brightness(1.2) saturate(80%); }
+.bookshelf-colorful .book { filter: saturate(200%) hue-rotate(random(360) + deg); }
