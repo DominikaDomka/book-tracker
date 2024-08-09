@@ -1,18 +1,22 @@
-.Bookshelf {
+.App {
   text-align: center;
 }
 
-.Bookshelf-image {
-  width: 60%; /* Adjust size to fit your design */
-  max-width: 100%;
-  height: auto;
+.bookshelf {
+  width: 50%; /* Adjusted the width to make the bookshelf a bit larger */
+  margin: 0 auto; /* Center the bookshelf */
 }
 
-.Buttons {
-  margin-top: 20px;
+button {
+  margin-top: 10px; /* Add space between the bookshelf and the buttons */
 }
 
-input, button {
+input {
+  margin-bottom: 10px; /* Add space below input fields */
+}
+
+button, input {
   display: block;
-  margin: 10px auto;
+  margin-left: auto;
+  margin-right: auto; /* Center buttons and input fields */
 }

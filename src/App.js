@@ -1,22 +1,44 @@
-import React from 'react';
-import { HashRouter as Router, Route, Switch } from 'react-router-dom';
-import './App.css';
-import Bookshelf from './Bookshelf'; // assuming you have this component
-import AddBook from './AddBook'; // assuming you have this component
+import React, { useState } from "react";
+import bookshelf from "./bookshelf.jpg"; // Make sure the path to the image is correct
+import "./App.css";
 
 function App() {
+  const [title, setTitle] = useState("");
+  const [spineTitle, setSpineTitle] = useState("");
+  const [theme, setTheme] = useState("default");
+
+  const handleAddBook = () => {
+    // Logic to add a book to the bookshelf
+    console.log("Book added:", { title, spineTitle, theme });
+  };
+
+  const handlePickStyle = (style) => {
+    setTheme(style);
+    // Logic to apply the chosen style
+    console.log("Style chosen:", style);
+  };
+
   return (
-    <Router>
-      <div className="App">
-        <header className="App-header">
-          <Switch>
-            <Route path="/" exact component={Bookshelf} />
-            <Route path="/add" component={AddBook} />
-            {/* Add more routes as needed */}
-          </Switch>
-        </header>
-      </div>
-    </Router>
+    <div className="App">
+      <img src={bookshelf} alt="Bookshelf" className="bookshelf" />
+      <input
+        type="text"
+        placeholder="Enter Book Title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <input
+        type="text"
+        placeholder="Enter Spine Title"
+        value={spineTitle}
+        onChange={(e) => setSpineTitle(e.target.value)}
+      />
+      <button onClick={handleAddBook}>Add Book</button>
+      <button onClick={() => handlePickStyle("spooky")}>Spooky</button>
+      <button onClick={() => handlePickStyle("fantasy")}>Fantasy</button>
+      <button onClick={() => handlePickStyle("soft")}>Soft</button>
+      <button onClick={() => handlePickStyle("colorful")}>Colorful</button>
+    </div>
   );
 }
 
