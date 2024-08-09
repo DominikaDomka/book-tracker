@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/DominikaDomka.github.io/book-tracker/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/DominikaDomka.github.io/book-tracker/static/js/main.4fc709d2.chunk.js",
-    "main.js.map": "/DominikaDomka.github.io/book-tracker/static/js/main.4fc709d2.chunk.js.map",
-    "runtime-main.js": "/DominikaDomka.github.io/book-tracker/static/js/runtime-main.834e6549.js",
-    "runtime-main.js.map": "/DominikaDomka.github.io/book-tracker/static/js/runtime-main.834e6549.js.map",
-    "static/js/2.d332109e.chunk.js": "/DominikaDomka.github.io/book-tracker/static/js/2.d332109e.chunk.js",
-    "static/js/2.d332109e.chunk.js.map": "/DominikaDomka.github.io/book-tracker/static/js/2.d332109e.chunk.js.map",
-    "static/js/3.97e06ffd.chunk.js": "/DominikaDomka.github.io/book-tracker/static/js/3.97e06ffd.chunk.js",
-    "static/js/3.97e06ffd.chunk.js.map": "/DominikaDomka.github.io/book-tracker/static/js/3.97e06ffd.chunk.js.map",
-    "index.html": "/DominikaDomka.github.io/book-tracker/index.html",
-    "static/css/main.6dea0f05.chunk.css.map": "/DominikaDomka.github.io/book-tracker/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.d332109e.chunk.js.LICENSE.txt": "/DominikaDomka.github.io/book-tracker/static/js/2.d332109e.chunk.js.LICENSE.txt"
+    "main.css": "/book-tracker/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/book-tracker/static/js/main.4fc709d2.chunk.js",
+    "main.js.map": "/book-tracker/static/js/main.4fc709d2.chunk.js.map",
+    "runtime-main.js": "/book-tracker/static/js/runtime-main.5e806f52.js",
+    "runtime-main.js.map": "/book-tracker/static/js/runtime-main.5e806f52.js.map",
+    "static/js/2.bcc8d5d3.chunk.js": "/book-tracker/static/js/2.bcc8d5d3.chunk.js",
+    "static/js/2.bcc8d5d3.chunk.js.map": "/book-tracker/static/js/2.bcc8d5d3.chunk.js.map",
+    "static/js/3.97e06ffd.chunk.js": "/book-tracker/static/js/3.97e06ffd.chunk.js",
+    "static/js/3.97e06ffd.chunk.js.map": "/book-tracker/static/js/3.97e06ffd.chunk.js.map",
+    "index.html": "/book-tracker/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/book-tracker/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.bcc8d5d3.chunk.js.LICENSE.txt": "/book-tracker/static/js/2.bcc8d5d3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.834e6549.js",
-    "static/js/2.d332109e.chunk.js",
+    "static/js/runtime-main.5e806f52.js",
+    "static/js/2.bcc8d5d3.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
     "static/js/main.4fc709d2.chunk.js"
   ]
