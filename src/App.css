@@ -19,8 +19,8 @@ body, html, #root {
 
 .bookshelf-container {
   position: relative;
-  width: 100%;
-  max-width: 800px;
+  width: 50%; /* Reduced from 100% to 50% */
+  max-width: 400px; /* Adjusted from 800px */
   margin-bottom: 20px;
 }
 
@@ -43,9 +43,9 @@ body, html, #root {
 }
 
 .book {
-  width: 30px;
-  height: 150px;
-  margin: 0 2px;
+  width: 15px; /* Reduced from 30px */
+  height: 75px; /* Reduced from 150px */
+  margin: 0 1px; /* Reduced from 2px */
   cursor: pointer;
   transition: transform 0.3s ease;
   background-size: cover;
@@ -65,10 +65,10 @@ body, html, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 5px;
-  font-size: 12px;
+  padding: 2px; /* Reduced from 5px */
+  font-size: 6px; /* Reduced from 12px */
   color: transparent;
-  text-shadow: 0 0 5px rgba(0,0,0,0.5);
+  text-shadow: 0 0 2px rgba(0,0,0,0.5);
 }
 
 .input-container {
@@ -78,20 +78,20 @@ body, html, #root {
   gap: 10px;
   margin-bottom: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 400px; /* Adjusted from 600px */
 }
 
 .book-input {
-  padding: 10px;
-  font-size: 16px;
+  padding: 8px; /* Slightly reduced */
+  font-size: 14px; /* Slightly reduced */
   border: 1px solid #ccc;
   border-radius: 4px;
-  flex: 1 1 200px;
+  flex: 1 1 150px; /* Adjusted from 200px */
 }
 
 .add-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 8px 16px; /* Slightly reduced */
+  font-size: 14px; /* Slightly reduced */
   cursor: pointer;
   background-color: #4CAF50;
   color: white;
@@ -114,6 +114,7 @@ body, html, #root {
 
 .book-details h2 {
   margin-top: 0;
+  font-size: 18px; /* Slightly reduced */
 }
 
 .book-details input[type="range"] {
@@ -125,4 +126,5 @@ body, html, #root {
   margin: 5px;
   padding: 5px 10px;
   cursor: pointer;
+  font-size: 12px; /* Slightly reduced */
 }

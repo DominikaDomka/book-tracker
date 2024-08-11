@@ -8,7 +8,7 @@ function App() {
   });
   const [title, setTitle] = useState("");
   const [spineTitle, setSpineTitle] = useState("");
-  const [category, setCategory] = useState("default");
+  const [category, setCategory] = useState("spooky");
   const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function App() {
       setBooks([...books, newBook]);
       setTitle("");
       setSpineTitle("");
-      setCategory("default");
+      setCategory("spooky");
     }
   };
 
@@ -89,7 +89,6 @@ function App() {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="default">Default</option>
           <option value="spooky">Spooky</option>
           <option value="fantasy">Fantasy</option>
           <option value="soft">Soft</option>
