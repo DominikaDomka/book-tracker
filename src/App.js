@@ -8,7 +8,8 @@ function App() {
   });
   const [title, setTitle] = useState("");
   const [spineTitle, setSpineTitle] = useState("");
-  const [theme, setTheme] = useState("default");
+  const [category, setCategory] = useState("default");
+  const [selectedBook, setSelectedBook] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(books));
@@ -16,15 +17,29 @@ function App() {
 
   const addBook = () => {
     if (title.trim() !== "" && spineTitle.trim() !== "") {
-      const randomSpineNumber = Math.floor(Math.random() * 5) + 1; // Assuming you have 5 spine images
-      setBooks([...books, { title, spineTitle, spineImage: `spine${randomSpineNumber}.png` }]);
+      const newBook = {
+        title,
+        spineTitle,
+        category,
+        progress: 0,
+        id: Date.now()
+      };
+      setBooks([...books, newBook]);
       setTitle("");
       setSpineTitle("");
+      setCategory("default");
     }
   };
 
-  const changeTheme = (newTheme) => {
-    setTheme(newTheme);
+  const updateProgress = (id, progress) => {
+    setBooks(books.map(book => 
+      book.id === id ? { ...book, progress } : book
+    ));
+  };
+
+  const deleteBook = (id) => {
+    setBooks(books.filter(book => book.id !== id));
+    setSelectedBook(null);
   };
 
   const handleKeyPress = (e) => {
@@ -53,22 +68,45 @@ function App() {
           onChange={(e) => setSpineTitle(e.target.value)}
           onKeyPress={handleKeyPress}
         />
+        <select
+          className="book-input"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="default">Default</option>
+          <option value="spooky">Spooky</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="soft">Soft</option>
+          <option value="colorful">Colorful</option>
+        </select>
         <button onClick={addBook} className="add-button">Add Book</button>
       </div>
-      <div className="theme-buttons">
-        <button onClick={() => changeTheme("spooky")}>Spooky</button>
-        <button onClick={() => changeTheme("fantasy")}>Fantasy</button>
-        <button onClick={() => changeTheme("soft")}>Soft</button>
-        <button onClick={() => changeTheme("colorful")}>Colorful</button>
-      </div>
-      <div className={`bookshelf-${theme}`}>
-        {books.map((book, index) => (
-          <div key={index} className="book" style={{backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`}}>
+      <div className="bookshelf-container">
+        {books.map((book) => (
+          <div 
+            key={book.id} 
+            className={`book ${book.category}`} 
+            onClick={() => setSelectedBook(book)}
+          >
             <div className="spine">{book.spineTitle}</div>
-            <div className="full-title">{book.title}</div>
           </div>
         ))}
       </div>
+      {selectedBook && (
+        <div className="book-details">
+          <h2>{selectedBook.title}</h2>
+          <input 
+            type="range" 
+            min="0" 
+            max="100" 
+            value={selectedBook.progress} 
+            onChange={(e) => updateProgress(selectedBook.id, parseInt(e.target.value))}
+          />
+          <p>Progress: {selectedBook.progress}%</p>
+          <button onClick={() => deleteBook(selectedBook.id)}>Delete Book</button>
+          <button onClick={() => setSelectedBook(null)}>Close</button>
+        </div>
+      )}
     </div>
   );
 }

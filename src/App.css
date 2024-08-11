@@ -26,14 +26,19 @@ body, html, #root {
 .input-container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
   margin-bottom: 20px;
   width: 100%;
+  max-width: 600px;
 }
 
 .book-input {
-  margin: 0 5px;
   padding: 10px;
   font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1 1 200px;
 }
 
 .add-button {
@@ -44,47 +49,24 @@ body, html, #root {
   color: white;
   border: none;
   border-radius: 4px;
+  flex: 0 0 auto;
 }
 
-.theme-buttons {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.theme-buttons button {
-  margin: 5px;
-  padding: 8px 16px;
-  cursor: pointer;
-  background-color: #f0f0f0;
-  border: none;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.theme-buttons button:hover {
-  background-color: #e0e0e0;
-}
-
-.bookshelf-default, .bookshelf-spooky, .bookshelf-fantasy, .bookshelf-soft, .bookshelf-colorful {
+.bookshelf-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
   width: 100%;
+  max-width: 800px;
+  margin-top: 20px;
 }
 
 .book {
   width: 30px;
   height: 150px;
-  margin: 5px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  transition: transform 0.3s;
+  cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .book:hover {
@@ -95,36 +77,45 @@ body, html, #root {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotate(180deg);
-  padding: 5px;
-  font-size: 12px;
-  overflow: hidden;
-  text-overflow: ellipsis;
   height: 100%;
-  color: transparent;
-  text-shadow: 0 0 5px rgba(0,0,0,0.5);
-}
-
-.full-title {
-  display: none;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 5px;
-  border-radius: 3px;
   font-size: 12px;
-  z-index: 1;
-  bottom: 100%;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+.book.default { background-color: #b0c4de; }
+.book.spooky { background-color: #4b0082; }
+.book.fantasy { background-color: #9370db; }
+.book.soft { background-color: #f0e68c; }
+.book.colorful { background-color: #ff69b4; }
+
+.book-details {
+  position: fixed;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
 }
 
-.book:hover .full-title {
-  display: block;
+.book-details h2 {
+  margin-top: 0;
 }
 
-/* Theme-specific styles */
-.bookshelf-spooky .book { filter: sepia(100%) hue-rotate(200deg); }
-.bookshelf-fantasy .book { filter: hue-rotate(90deg) saturate(150%); }
-.bookshelf-soft .book { filter: brightness(1.2) saturate(80%); }
-.bookshelf-colorful .book { filter: saturate(200%) hue-rotate(random(360) + deg); }
+.book-details input[type="range"] {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.book-details button {
+  margin: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
