@@ -47,8 +47,8 @@ body, html, #root {
 }
 
 .book {
-  width: 70px;
-  height: 100px;
+  width: 70px !important; /* Use !important to ensure this takes precedence */
+  height: 200px !important; /* Adjust height as needed */
   margin: 0;
   padding: 0;
   cursor: pointer;

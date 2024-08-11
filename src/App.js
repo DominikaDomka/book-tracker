@@ -61,9 +61,7 @@ function App() {
               key={book.id} 
               className="book"
               style={{
-                backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`,
-                width: '20px', // Adjust as needed
-                height: '100px' // Adjust as needed
+                backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`
               }}
               onClick={() => setSelectedBook(book)}
             >
