@@ -11,7 +11,6 @@ function App() {
   const [category, setCategory] = useState("spooky");
   const [selectedBook, setSelectedBook] = useState(null);
 
-  // Define the number of spine images for each category
   const spineCount = {
     spooky: 10,
     soft: 14,
@@ -61,7 +60,11 @@ function App() {
             <div 
               key={book.id} 
               className="book"
-              style={{backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`}}
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`,
+                width: '20px', // Adjust as needed
+                height: '100px' // Adjust as needed
+              }}
               onClick={() => setSelectedBook(book)}
             >
               <div className="spine">{book.spineTitle}</div>

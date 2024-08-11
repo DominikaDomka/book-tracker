@@ -36,7 +36,7 @@ body, html, #root {
 .books-overlay {
   position: absolute;
   top: 22%;
-  left: 30%;
+  left: 40%;
   right: 4%;
   bottom: 22%;
   display: flex;
@@ -47,19 +47,22 @@ body, html, #root {
 }
 
 .book {
-  width: 100px;
-  height: 90px;
-  margin: 0 0px;
+  width: 50px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
+  flex-shrink: 0;
 }
 
 .book:hover {
   transform: scale(1.05);
+  z-index: 1;
 }
 
 .spine {
