@@ -17,12 +17,14 @@ function App() {
 
   const addBook = () => {
     if (title.trim() !== "" && spineTitle.trim() !== "") {
+      const spineNumber = Math.floor(Math.random() * 5) + 1; // Assuming we have 5 spine images per category
       const newBook = {
         title,
         spineTitle,
         category,
         progress: 0,
-        id: Date.now()
+        id: Date.now(),
+        spineImage: `${category}-${spineNumber}.png`
       };
       setBooks([...books, newBook]);
       setTitle("");
@@ -50,7 +52,21 @@ function App() {
 
   return (
     <div className="App">
-      <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} alt="Bookshelf" className="bookshelf" />
+      <div className="bookshelf-container">
+        <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} alt="Bookshelf" className="bookshelf" />
+        <div className="books-overlay">
+          {books.map((book) => (
+            <div 
+              key={book.id} 
+              className="book"
+              style={{backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`}}
+              onClick={() => setSelectedBook(book)}
+            >
+              <div className="spine">{book.spineTitle}</div>
+            </div>
+          ))}
+        </div>
+      </div>
       <div className="input-container">
         <input
           className="book-input"
@@ -80,17 +96,6 @@ function App() {
           <option value="colorful">Colorful</option>
         </select>
         <button onClick={addBook} className="add-button">Add Book</button>
-      </div>
-      <div className="bookshelf-container">
-        {books.map((book) => (
-          <div 
-            key={book.id} 
-            className={`book ${book.category}`} 
-            onClick={() => setSelectedBook(book)}
-          >
-            <div className="spine">{book.spineTitle}</div>
-          </div>
-        ))}
       </div>
       {selectedBook && (
         <div className="book-details">
