@@ -17,7 +17,7 @@ function App() {
 
   const addBook = () => {
     if (title.trim() !== "" && spineTitle.trim() !== "") {
-      const spineNumber = Math.floor(Math.random() * 5) + 1; // Assuming we have 5 spine images per category
+      const spineNumber = Math.floor(Math.random() * 5) + 1;
       const newBook = {
         title,
         spineTitle,
@@ -29,7 +29,6 @@ function App() {
       setBooks([...books, newBook]);
       setTitle("");
       setSpineTitle("");
-      setCategory("spooky");
     }
   };
 
@@ -44,57 +43,51 @@ function App() {
     setSelectedBook(null);
   };
 
-  const handleKeyPress = (e) => {
-    if (e.key === 'Enter') {
-      addBook();
-    }
-  };
-
   return (
     <div className="App">
-      <div className="bookshelf-container">
-        <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} alt="Bookshelf" className="bookshelf" />
-        <div className="books-overlay">
-          {books.map((book) => (
-            <div 
-              key={book.id} 
-              className="book"
-              style={{backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`}}
-              onClick={() => setSelectedBook(book)}
-            >
-              <div className="spine">{book.spineTitle}</div>
-            </div>
-          ))}
+      <div className="widget-container">
+        <div className="bookshelf-container">
+          <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} alt="Bookshelf" className="bookshelf" />
+          <div className="books-overlay">
+            {books.map((book) => (
+              <div 
+                key={book.id} 
+                className="book"
+                style={{backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`}}
+                onClick={() => setSelectedBook(book)}
+              >
+                <div className="spine">{book.spineTitle}</div>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="input-container">
-        <input
-          className="book-input"
-          type="text"
-          placeholder="Full Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
-        <input
-          className="book-input"
-          type="text"
-          placeholder="Spine Title"
-          value={spineTitle}
-          onChange={(e) => setSpineTitle(e.target.value)}
-          onKeyPress={handleKeyPress}
-        />
-        <select
-          className="book-input"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          <option value="spooky">Spooky</option>
-          <option value="fantasy">Fantasy</option>
-          <option value="soft">Soft</option>
-          <option value="colorful">Colorful</option>
-        </select>
-        <button onClick={addBook} className="add-button">Add Book</button>
+        <div className="input-container">
+          <input
+            className="book-input"
+            type="text"
+            placeholder="Title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <input
+            className="book-input"
+            type="text"
+            placeholder="Spine"
+            value={spineTitle}
+            onChange={(e) => setSpineTitle(e.target.value)}
+          />
+          <select
+            className="book-input"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
+            <option value="spooky">Spooky</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="soft">Soft</option>
+            <option value="colorful">Colorful</option>
+          </select>
+          <button onClick={addBook} className="add-button">Add</button>
+        </div>
       </div>
       {selectedBook && (
         <div className="book-details">
@@ -107,7 +100,7 @@ function App() {
             onChange={(e) => updateProgress(selectedBook.id, parseInt(e.target.value))}
           />
           <p>Progress: {selectedBook.progress}%</p>
-          <button onClick={() => deleteBook(selectedBook.id)}>Delete Book</button>
+          <button onClick={() => deleteBook(selectedBook.id)}>Delete</button>
           <button onClick={() => setSelectedBook(null)}>Close</button>
         </div>
       )}
