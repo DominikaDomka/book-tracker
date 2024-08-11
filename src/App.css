@@ -14,27 +14,16 @@ body, html, #root {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   padding: 10px;
   box-sizing: border-box;
-}
-
-.widget-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  max-width: 500px;
-  height: 600px;
-  background-color: transparent;
-  border-radius: 10px;
-  padding: 10px;
 }
 
 .bookshelf-container {
   position: relative;
   width: 100%;
-  height: 70%;
+  max-width: 600px;
+  aspect-ratio: 16 / 9;
   margin-bottom: 20px;
 }
 
@@ -42,15 +31,14 @@ body, html, #root {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  border-radius: 5px;
 }
 
 .books-overlay {
   position: absolute;
-  top: 15%;
-  left: 5%;
-  right: 5%;
-  bottom: 20%;
+  top: 22%;
+  left: 4%;
+  right: 4%;
+  bottom: 22%;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-end;
@@ -59,8 +47,8 @@ body, html, #root {
 }
 
 .book {
-  width: 18px;
-  height: 90px;
+  width: 20px;
+  height: 100px;
   margin: 0 2px;
   cursor: pointer;
   transition: transform 0.3s ease;
@@ -93,6 +81,7 @@ body, html, #root {
   justify-content: space-between;
   gap: 10px;
   width: 100%;
+  max-width: 600px;
 }
 
 .book-input {
@@ -100,7 +89,7 @@ body, html, #root {
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  flex: 1 1 calc(50% - 5px);
+  flex: 1 1 calc(33% - 10px);
 }
 
 .add-button {
@@ -111,7 +100,7 @@ body, html, #root {
   color: white;
   border: none;
   border-radius: 4px;
-  flex: 1 1 100%;
+  flex: 1 1 calc(33% - 10px);
 }
 
 .book-details {

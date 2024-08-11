@@ -45,49 +45,47 @@ function App() {
 
   return (
     <div className="App">
-      <div className="widget-container">
-        <div className="bookshelf-container">
-          <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} alt="Bookshelf" className="bookshelf" />
-          <div className="books-overlay">
-            {books.map((book) => (
-              <div 
-                key={book.id} 
-                className="book"
-                style={{backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`}}
-                onClick={() => setSelectedBook(book)}
-              >
-                <div className="spine">{book.spineTitle}</div>
-              </div>
-            ))}
-          </div>
+      <div className="bookshelf-container">
+        <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} alt="Bookshelf" className="bookshelf" />
+        <div className="books-overlay">
+          {books.map((book) => (
+            <div 
+              key={book.id} 
+              className="book"
+              style={{backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`}}
+              onClick={() => setSelectedBook(book)}
+            >
+              <div className="spine">{book.spineTitle}</div>
+            </div>
+          ))}
         </div>
-        <div className="input-container">
-          <input
-            className="book-input"
-            type="text"
-            placeholder="Title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-          />
-          <input
-            className="book-input"
-            type="text"
-            placeholder="Spine"
-            value={spineTitle}
-            onChange={(e) => setSpineTitle(e.target.value)}
-          />
-          <select
-            className="book-input"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-          >
-            <option value="spooky">Spooky</option>
-            <option value="fantasy">Fantasy</option>
-            <option value="soft">Soft</option>
-            <option value="colorful">Colorful</option>
-          </select>
-          <button onClick={addBook} className="add-button">Add</button>
-        </div>
+      </div>
+      <div className="input-container">
+        <input
+          className="book-input"
+          type="text"
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          className="book-input"
+          type="text"
+          placeholder="Spine"
+          value={spineTitle}
+          onChange={(e) => setSpineTitle(e.target.value)}
+        />
+        <select
+          className="book-input"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="spooky">Spooky</option>
+          <option value="fantasy">Fantasy</option>
+          <option value="soft">Soft</option>
+          <option value="colorful">Colorful</option>
+        </select>
+        <button onClick={addBook} className="add-button">Add</button>
       </div>
       {selectedBook && (
         <div className="book-details">
