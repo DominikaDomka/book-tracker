@@ -47,9 +47,9 @@ body, html, #root {
 }
 
 .book {
-  width: 60px;
+  width: 100px;
   height: 90px;
-  margin: 0 -30px;
+  margin: 0 0px;
   cursor: pointer;
   transition: transform 0.3s ease;
   background-size: cover;
