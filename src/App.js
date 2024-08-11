@@ -11,13 +11,21 @@ function App() {
   const [category, setCategory] = useState("spooky");
   const [selectedBook, setSelectedBook] = useState(null);
 
+  // Define the number of spine images for each category
+  const spineCount = {
+    spooky: 5,
+    soft: 5,
+    colorful: 5,
+    fantasy: 5
+  };
+
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(books));
   }, [books]);
 
   const addBook = () => {
     if (title.trim() !== "" && spineTitle.trim() !== "") {
-      const spineNumber = Math.floor(Math.random() * 5) + 1;
+      const spineNumber = Math.floor(Math.random() * spineCount[category]) + 1;
       const newBook = {
         title,
         spineTitle,
