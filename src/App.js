@@ -13,10 +13,10 @@ function App() {
 
   // Define the number of spine images for each category
   const spineCount = {
-    spooky: 5,
-    soft: 5,
-    colorful: 5,
-    fantasy: 5
+    spooky: 10,
+    soft: 14,
+    colorful: 7,
+    fantasy: 13
   };
 
   useEffect(() => {
@@ -40,10 +40,11 @@ function App() {
     }
   };
 
-  const updateProgress = (id, progress) => {
+  const updateProgress = (id, newProgress) => {
     setBooks(books.map(book => 
-      book.id === id ? { ...book, progress } : book
+      book.id === id ? { ...book, progress: newProgress } : book
     ));
+    setSelectedBook(prev => prev.id === id ? { ...prev, progress: newProgress } : prev);
   };
 
   const deleteBook = (id) => {
@@ -102,7 +103,7 @@ function App() {
             type="range" 
             min="0" 
             max="100" 
-            value={selectedBook.progress} 
+            value={selectedBook.progress}
             onChange={(e) => updateProgress(selectedBook.id, parseInt(e.target.value))}
           />
           <p>Progress: {selectedBook.progress}%</p>
