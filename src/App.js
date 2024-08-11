@@ -10,6 +10,7 @@ function App() {
   const [spineTitle, setSpineTitle] = useState("");
   const [category, setCategory] = useState("spooky");
   const [selectedBook, setSelectedBook] = useState(null);
+  const [bookDimensions, setBookDimensions] = useState({ width: 70, height: 200 });
 
   const spineCount = {
     spooky: 10,
@@ -21,6 +22,11 @@ function App() {
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(books));
   }, [books]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--book-width', `${bookDimensions.width}px`);
+    document.documentElement.style.setProperty('--book-height', `${bookDimensions.height}px`);
+  }, [bookDimensions]);
 
   const addBook = () => {
     if (title.trim() !== "" && spineTitle.trim() !== "") {
@@ -49,6 +55,10 @@ function App() {
   const deleteBook = (id) => {
     setBooks(books.filter(book => book.id !== id));
     setSelectedBook(null);
+  };
+
+  const updateBookDimensions = (width, height) => {
+    setBookDimensions({ width, height });
   };
 
   return (
@@ -96,6 +106,20 @@ function App() {
           <option value="colorful">Colorful</option>
         </select>
         <button onClick={addBook} className="add-button">Add</button>
+      </div>
+      <div className="dimension-controls">
+        <input
+          type="number"
+          value={bookDimensions.width}
+          onChange={(e) => updateBookDimensions(parseInt(e.target.value), bookDimensions.height)}
+          placeholder="Book Width"
+        />
+        <input
+          type="number"
+          value={bookDimensions.height}
+          onChange={(e) => updateBookDimensions(bookDimensions.width, parseInt(e.target.value))}
+          placeholder="Book Height"
+        />
       </div>
       {selectedBook && (
         <div className="book-details">
