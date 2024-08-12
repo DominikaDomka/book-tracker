@@ -11,8 +11,7 @@ function App() {
   const [category, setCategory] = useState("spooky");
   const [selectedBook, setSelectedBook] = useState(null);
 
-  const bookDimensions = { width: 30, height: 100 }; // Reduced book size
-  const bookSpacing = 0; // No spacing between books
+  const bookDimensions = { width: 30, height: 100 };
 
   const spineCount = {
     spooky: 10,
@@ -68,7 +67,7 @@ function App() {
                 width: `${bookDimensions.width}px`,
                 height: `${bookDimensions.height}px`,
                 position: 'absolute',
-                left: `${(index % 10) * bookDimensions.width}px`, // Increased to 10 books per row
+                left: `${(index % 10) * bookDimensions.width}px`,
                 bottom: `${Math.floor(index / 10) * bookDimensions.height}px`
               }}
               onClick={() => setSelectedBook(book)}
