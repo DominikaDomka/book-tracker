@@ -51,8 +51,8 @@ body, html, #root {
   width: var(--book-width);
   height: var(--book-height);
   margin: 0;
-  margin-right: -2px; /* Negative margin to create overlap */
-  margin-bottom: -2px; /* Negative margin for vertical overlap if needed */
+  margin-right: -10px; /* Negative margin to create overlap */
+  margin-bottom: -10px; /* Negative margin for vertical overlap if needed */
   padding: 0;
   cursor: pointer;
   transition: transform 0.3s ease;
