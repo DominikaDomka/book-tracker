@@ -21,10 +21,8 @@ body, html, #root {
 
 .bookshelf-container {
   position: relative;
-  width: 90vw;
-  max-width: 600px;
-  height: 50vh;
-  max-height: 300px;
+  width: 300px; /* Fixed width */
+  height: 150px; /* Fixed height */
   margin-bottom: 20px;
 }
 
@@ -36,10 +34,10 @@ body, html, #root {
 
 .books-overlay {
   position: absolute;
-  top: 22%;
-  left: 20%;
-  right: 4%;
-  bottom: 22%;
+  top: 25%;
+  left: 10%;
+  right: 10%;
+  bottom: 25%;
   overflow: hidden;
 }
 
@@ -58,9 +56,9 @@ body, html, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6px;
+  font-size: 4px; /* Reduced font size */
   color: white;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -72,8 +70,9 @@ body, html, #root {
   justify-content: space-between;
   gap: 10px;
   width: 90%;
-  max-width: 600px;
+  max-width: 300px; /* Match bookshelf width */
 }
+
 
 .book-input {
   padding: 8px;
