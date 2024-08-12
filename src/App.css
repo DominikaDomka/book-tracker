@@ -21,9 +21,10 @@ body, html, #root {
 
 .bookshelf-container {
   position: relative;
-  width: 480px; /* Increased width */
-  height: 270px; /* Increased height, maintaining aspect ratio */
+  width: 600px; /* Drastically increased width */
+  height: 400px; /* Drastically increased height */
   margin-bottom: 20px;
+  border: 5px solid red; /* Very noticeable border */
 }
 
 .bookshelf {
