@@ -44,7 +44,6 @@ body, html, #root {
   align-content: flex-end;
   justify-content: flex-start;
   overflow: hidden;
-  gap: 0; /* Remove any gap */
 }
 
 .book {
@@ -59,11 +58,13 @@ body, html, #root {
   background-repeat: no-repeat;
   position: relative;
   flex-shrink: 0;
+  margin-right: -1px; /* Negative margin to ensure no gaps */
+  margin-bottom: -1px; /* Negative margin for vertical stacking */
 }
 
 .book:hover {
   transform: scale(1.05);
-  z-index: 1;
+  z-index: 2;
 }
 
 .spine {
@@ -76,7 +77,7 @@ body, html, #root {
   align-items: center;
   justify-content: center;
   padding: 2px;
-  font-size: calc(var(--book-width) * 0.25); /* Adjust font size relative to book width */
+  font-size: calc(var(--book-width) * 0.22); /* Slightly reduce font size for wider books */
   color: #fff;
   text-shadow: 
     -1px -1px 0 #000,  
