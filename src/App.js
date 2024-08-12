@@ -6,20 +6,20 @@ function App() {
     const savedBooks = localStorage.getItem('books');
     return savedBooks ? JSON.parse(savedBooks) : [];
   });
-  const [title, setTitle] = useState('');
-  const [author, setAuthor] = useState('');
+  const [spine, setSpine] = useState('');
+  const [fullTitle, setFullTitle] = useState('');
   const [category, setCategory] = useState('spooky');
   const [selectedBook, setSelectedBook] = useState(null);
 
-  const bookWidth = 10; // Further reduced width of each book spine in pixels
-  const bookHeight = 60; // Further reduced height of each book spine in pixels
-  const bookSpacing = 1; // Small space between books in pixels
+  const bookWidth = 20; // Adjust as needed
+  const bookHeight = 100; // Adjust as needed
+  const bookSpacing = 2; // Adjust as needed
 
   const categories = {
-    spooky: { count: 10, color: '#7D5A5A' },
-    fantasy: { count: 14, color: '#3D8361' },
-    soft: { count: 7, color: '#F2D8D8' },
-    colorful: { count: 13, color: '#FD8A8A' }
+    spooky: 10,
+    fantasy: 14,
+    soft: 7,
+    colorful: 13
   };
 
   useEffect(() => {
@@ -27,18 +27,19 @@ function App() {
   }, [books]);
 
   const addBook = () => {
-    if (title.trim() && author.trim()) {
+    if (spine.trim() && fullTitle.trim()) {
+      const spineNumber = Math.floor(Math.random() * categories[category]) + 1;
       const newBook = {
         id: Date.now(),
-        title: title.trim(),
-        author: author.trim(),
+        spine: spine.trim(),
+        fullTitle: fullTitle.trim(),
         category,
         progress: 0,
-        color: categories[category].color
+        spineImage: `${category}-${spineNumber}.png`
       };
       setBooks([...books, newBook]);
-      setTitle('');
-      setAuthor('');
+      setSpine('');
+      setFullTitle('');
     }
   };
 
@@ -67,14 +68,15 @@ function App() {
               key={book.id}
               className="book"
               style={{
-                backgroundColor: book.color,
+                backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`,
+                backgroundSize: 'cover',
                 width: `${bookWidth}px`,
                 height: `${bookHeight}px`,
                 left: `${index * (bookWidth + bookSpacing)}px`
               }}
               onClick={() => setSelectedBook(book)}
             >
-              <div className="spine-text">{book.author}</div>
+              <div className="spine-text">{book.spine}</div>
             </div>
           ))}
         </div>
@@ -82,15 +84,15 @@ function App() {
       <div className="controls">
         <input
           type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Spine"
+          value={spine}
+          onChange={(e) => setSpine(e.target.value)}
         />
         <input
           type="text"
-          placeholder="Author"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
+          placeholder="Full Title"
+          value={fullTitle}
+          onChange={(e) => setFullTitle(e.target.value)}
         />
         <select
           value={category}
@@ -104,8 +106,7 @@ function App() {
       </div>
       {selectedBook && (
         <div className="book-details">
-          <h2>{selectedBook.title}</h2>
-          <p>Author: {selectedBook.author}</p>
+          <h2>{selectedBook.fullTitle}</h2>
           <input
             type="range"
             min="0"

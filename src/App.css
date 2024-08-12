@@ -1,11 +1,12 @@
 .App {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .bookshelf {
   position: relative;
-  width: 300px;
+  width: 100%;
+  max-width: 300px;
   height: 200px;
   margin: 0 auto;
   overflow: hidden;
@@ -53,17 +54,18 @@
 }
 
 .controls {
-  margin-top: 20px;
+  margin-top: 10px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .controls input,
 .controls select,
 .controls button {
   padding: 5px;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .book-details {
@@ -72,7 +74,24 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: white;
-  padding: 20px;
+  padding: 15px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 1000;
+}
+
+.book-details h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.book-details input[type="range"] {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.book-details button {
+  margin: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
 }
