@@ -10,7 +10,7 @@ function App() {
   const [spineTitle, setSpineTitle] = useState("");
   const [category, setCategory] = useState("spooky");
   const [selectedBook, setSelectedBook] = useState(null);
-  const [bookDimensions, setBookDimensions] = useState({ width: 70, height: 200 });
+  const [bookDimensions, setBookDimensions] = useState({ width: 70, height: 160 });
 
   const spineCount = {
     spooky: 10,
