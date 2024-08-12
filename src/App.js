@@ -26,13 +26,6 @@ function App() {
     localStorage.setItem('books', JSON.stringify(books));
   }, [books]);
 
-  useEffect(() => {
-    const bookshelfElement = document.querySelector('.bookshelf');
-    if (bookshelfElement) {
-      bookshelfElement.style.backgroundImage = `url(${process.env.PUBLIC_URL}/bookshelf.jpg)`;
-    }
-  }, []);
-
   const addBook = () => {
     if (title.trim() && author.trim()) {
       const newBook = {
@@ -63,6 +56,7 @@ function App() {
   return (
     <div className="App">
       <div className="bookshelf">
+        <img src="/bookshelf.jpg" alt="Bookshelf" className="bookshelf-image" />
         <div className="books-container">
           {books.map((book, index) => (
             <div
