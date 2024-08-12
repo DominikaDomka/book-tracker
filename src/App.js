@@ -11,8 +11,9 @@ function App() {
   const [category, setCategory] = useState("spooky");
   const [selectedBook, setSelectedBook] = useState(null);
 
-  // Set book dimensions directly
-  const bookDimensions = { width: 52, height: 80 };
+  const bookDimensions = { width: 52, height: 120 };
+  const booksPerRow = 10; // Adjust this number based on how many books you want per row
+  const bookSpacing = 2; // Spacing between books in pixels
 
   const spineCount = {
     spooky: 10,
@@ -24,11 +25,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(books));
   }, [books]);
-
-  useEffect(() => {
-    document.documentElement.style.setProperty('--book-width', `${bookDimensions.width}px`);
-    document.documentElement.style.setProperty('--book-height', `${bookDimensions.height}px`);
-  }, [bookDimensions.width, bookDimensions.height]);
 
   const addBook = () => {
     if (title.trim() !== "" && spineTitle.trim() !== "") {
@@ -64,18 +60,30 @@ function App() {
       <div className="bookshelf-container">
         <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} alt="Bookshelf" className="bookshelf" />
         <div className="books-overlay">
-          {books.map((book) => (
-            <div 
-              key={book.id} 
-              className="book"
-              style={{
-                backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`
-              }}
-              onClick={() => setSelectedBook(book)}
-            >
-              <div className="spine">{book.spineTitle}</div>
-            </div>
-          ))}
+          {books.map((book, index) => {
+            const row = Math.floor(index / booksPerRow);
+            const col = index % booksPerRow;
+            const left = col * (bookDimensions.width + bookSpacing);
+            const bottom = row * (bookDimensions.height + bookSpacing);
+
+            return (
+              <div 
+                key={book.id} 
+                className="book"
+                style={{
+                  backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`,
+                  width: `${bookDimensions.width}px`,
+                  height: `${bookDimensions.height}px`,
+                  position: 'absolute',
+                  left: `${left}px`,
+                  bottom: `${bottom}px`
+                }}
+                onClick={() => setSelectedBook(book)}
+              >
+                <div className="spine">{book.spineTitle}</div>
+              </div>
+            );
+          })}
         </div>
       </div>
       <div className="input-container">
