@@ -12,8 +12,7 @@ function App() {
   const [selectedBook, setSelectedBook] = useState(null);
 
   const bookDimensions = { width: 52, height: 120 };
-  const booksPerRow = 10; // Adjust this number based on how many books you want per row
-  const bookSpacing = 2; // Spacing between books in pixels
+  const bookSpacing = 2;
 
   const spineCount = {
     spooky: 10,
@@ -57,33 +56,27 @@ function App() {
 
   return (
     <div className="App">
+      <h1 style={{color: 'red'}}>Test Change - Delete Me</h1>
       <div className="bookshelf-container">
         <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} alt="Bookshelf" className="bookshelf" />
         <div className="books-overlay">
-          {books.map((book, index) => {
-            const row = Math.floor(index / booksPerRow);
-            const col = index % booksPerRow;
-            const left = col * (bookDimensions.width + bookSpacing);
-            const bottom = row * (bookDimensions.height + bookSpacing);
-
-            return (
-              <div 
-                key={book.id} 
-                className="book"
-                style={{
-                  backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`,
-                  width: `${bookDimensions.width}px`,
-                  height: `${bookDimensions.height}px`,
-                  position: 'absolute',
-                  left: `${left}px`,
-                  bottom: `${bottom}px`
-                }}
-                onClick={() => setSelectedBook(book)}
-              >
-                <div className="spine">{book.spineTitle}</div>
-              </div>
-            );
-          })}
+          {books.map((book, index) => (
+            <div 
+              key={book.id} 
+              className="book"
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`,
+                width: `${bookDimensions.width}px`,
+                height: `${bookDimensions.height}px`,
+                position: 'absolute',
+                left: `${(index % 5) * (bookDimensions.width + bookSpacing)}px`,
+                bottom: `${Math.floor(index / 5) * (bookDimensions.height + bookSpacing)}px`
+              }}
+              onClick={() => setSelectedBook(book)}
+            >
+              <div className="spine">{book.spineTitle}</div>
+            </div>
+          ))}
         </div>
       </div>
       <div className="input-container">
