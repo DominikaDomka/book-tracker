@@ -12,7 +12,7 @@ function App() {
   const [selectedBook, setSelectedBook] = useState(null);
 
   // Set book dimensions directly
-  const bookDimensions = { width: 25, height: 100 };
+  const bookDimensions = { width: 40, height: 100 };
 
   const spineCount = {
     spooky: 10,
