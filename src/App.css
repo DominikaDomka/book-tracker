@@ -44,6 +44,7 @@ body, html, #root {
   align-content: flex-end;
   justify-content: flex-start;
   overflow: hidden;
+  font-size: 0; /* Remove any space caused by inline-block */
 }
 
 .book {
@@ -58,8 +59,10 @@ body, html, #root {
   background-repeat: no-repeat;
   position: relative;
   flex-shrink: 0;
-  margin-right: -1px; /* Negative margin to ensure no gaps */
-  margin-bottom: -1px; /* Negative margin for vertical stacking */
+  display: inline-block;
+  vertical-align: bottom;
+  margin-right: -2px; /* Increased negative margin */
+  margin-bottom: -2px; /* Increased negative margin for vertical stacking */
 }
 
 .book:hover {
@@ -77,7 +80,7 @@ body, html, #root {
   align-items: center;
   justify-content: center;
   padding: 2px;
-  font-size: calc(var(--book-width) * 0.22); /* Slightly reduce font size for wider books */
+  font-size: calc(var(--book-width) * 0.22);
   color: #fff;
   text-shadow: 
     -1px -1px 0 #000,  
