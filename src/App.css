@@ -21,10 +21,9 @@ body, html, #root {
 
 .bookshelf-container {
   position: relative;
-  width: 600px; /* Drastically increased width */
-  height: 400px; /* Drastically increased height */
+  width: 600px; /* Keep the width that worked well */
+  height: 400px; /* Keep the height that worked well */
   margin-bottom: 20px;
-  border: 5px solid red; /* Very noticeable border */
 }
 
 .bookshelf {
@@ -57,7 +56,7 @@ body, html, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6px; /* Increased font size slightly */
+  font-size: 8px; /* Increased font size for wider spines */
   color: white;
   text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
   overflow: hidden;
@@ -71,8 +70,9 @@ body, html, #root {
   justify-content: space-between;
   gap: 10px;
   width: 90%;
-  max-width: 480px; /* Match bookshelf width */
+  max-width: 600px; /* Match bookshelf width */
 }
+
 
 .book-input {
   padding: 8px;
