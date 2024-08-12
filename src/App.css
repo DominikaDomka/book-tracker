@@ -6,14 +6,6 @@ body, html, #root {
   background-color: transparent;
 }
 
-body, html, #root {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  width: 100%;
-  background-color: transparent;
-}
-
 .App {
   text-align: center;
   background-color: transparent;
@@ -29,15 +21,15 @@ body, html, #root {
 
 .bookshelf-container {
   position: relative;
-  width: 320px; /* Increased width by about 1cm (assuming 1cm ≈ 38px) */
-  height: 180px; /* Adjusted height to maintain aspect ratio */
+  width: 480px; /* Increased width */
+  height: 270px; /* Increased height, maintaining aspect ratio */
   margin-bottom: 20px;
 }
 
 .bookshelf {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Changed to contain to show the full image */
+  object-fit: contain;
 }
 
 .books-overlay {
@@ -64,7 +56,7 @@ body, html, #root {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 5px; /* Slightly increased font size */
+  font-size: 6px; /* Increased font size slightly */
   color: white;
   text-shadow: -0.5px -0.5px 0 #000, 0.5px -0.5px 0 #000, -0.5px 0.5px 0 #000, 0.5px 0.5px 0 #000;
   overflow: hidden;
@@ -78,10 +70,8 @@ body, html, #root {
   justify-content: space-between;
   gap: 10px;
   width: 90%;
-  max-width: 320px; /* Match bookshelf width */
+  max-width: 480px; /* Match bookshelf width */
 }
-
-
 
 .book-input {
   padding: 8px;

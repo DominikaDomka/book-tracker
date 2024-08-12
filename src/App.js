@@ -11,7 +11,7 @@ function App() {
   const [category, setCategory] = useState("spooky");
   const [selectedBook, setSelectedBook] = useState(null);
 
-  const bookDimensions = { width: 16, height: 85 };
+  const bookDimensions = { width: 15, height: 85 }; // Reduced width slightly
 
   const spineCount = {
     spooky: 10,
@@ -67,7 +67,7 @@ function App() {
                 width: `${bookDimensions.width}px`,
                 height: `${bookDimensions.height}px`,
                 position: 'absolute',
-                left: `${index * bookDimensions.width}px`,
+                left: `${index * bookDimensions.width - index * 0.5}px`, // Slight overlap
                 bottom: '0'
               }}
               onClick={() => setSelectedBook(book)}
