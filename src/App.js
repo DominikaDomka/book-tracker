@@ -28,7 +28,7 @@ function App() {
   useEffect(() => {
     document.documentElement.style.setProperty('--book-width', `${bookDimensions.width}px`);
     document.documentElement.style.setProperty('--book-height', `${bookDimensions.height}px`);
-  }, []);
+  }, [bookDimensions.width, bookDimensions.height]);
 
   const addBook = () => {
     if (title.trim() !== "" && spineTitle.trim() !== "") {
@@ -51,7 +51,7 @@ function App() {
     setBooks(books.map(book => 
       book.id === id ? { ...book, progress: newProgress } : book
     ));
-    setSelectedBook(prev => prev.id === id ? { ...prev, progress: newProgress } : prev);
+    setSelectedBook(prev => prev && prev.id === id ? { ...prev, progress: newProgress } : prev);
   };
 
   const deleteBook = (id) => {
