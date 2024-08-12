@@ -1,23 +1,25 @@
-import React, { useState, useEffect } from "react";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
+import './App.css';
 
 function App() {
   const [books, setBooks] = useState(() => {
     const savedBooks = localStorage.getItem('books');
     return savedBooks ? JSON.parse(savedBooks) : [];
   });
-  const [title, setTitle] = useState("");
-  const [spineTitle, setSpineTitle] = useState("");
-  const [category, setCategory] = useState("spooky");
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
+  const [category, setCategory] = useState('spooky');
   const [selectedBook, setSelectedBook] = useState(null);
 
-  const bookDimensions = { width: 25, height: 85 };
+  const bookWidth = 20; // Width of each book spine in pixels
+  const bookHeight = 100; // Height of each book spine in pixels
+  const bookSpacing = 0; // Space between books in pixels
 
-  const spineCount = {
-    spooky: 10,
-    soft: 14,
-    colorful: 7,
-    fantasy: 13
+  const categories = {
+    spooky: { count: 10, color: '#7D5A5A' },
+    fantasy: { count: 14, color: '#3D8361' },
+    soft: { count: 7, color: '#F2D8D8' },
+    colorful: { count: 13, color: '#FD8A8A' }
   };
 
   useEffect(() => {
@@ -25,27 +27,25 @@ function App() {
   }, [books]);
 
   const addBook = () => {
-    if (title.trim() !== "" && spineTitle.trim() !== "") {
-      const spineNumber = Math.floor(Math.random() * spineCount[category]) + 1;
+    if (title.trim() && author.trim()) {
       const newBook = {
-        title,
-        spineTitle,
+        id: Date.now(),
+        title: title.trim(),
+        author: author.trim(),
         category,
         progress: 0,
-        id: Date.now(),
-        spineImage: `${category}-${spineNumber}.png`
+        color: categories[category].color
       };
       setBooks([...books, newBook]);
-      setTitle("");
-      setSpineTitle("");
+      setTitle('');
+      setAuthor('');
     }
   };
 
-  const updateProgress = (id, newProgress) => {
+  const updateProgress = (id, progress) => {
     setBooks(books.map(book => 
-      book.id === id ? { ...book, progress: newProgress } : book
+      book.id === id ? { ...book, progress } : book
     ));
-    setSelectedBook(prev => prev && prev.id === id ? { ...prev, progress: newProgress } : prev);
   };
 
   const deleteBook = (id) => {
@@ -55,62 +55,56 @@ function App() {
 
   return (
     <div className="App">
-      <div className="bookshelf-container">
-        <img src={`${process.env.PUBLIC_URL}/bookshelf.jpg`} alt="Bookshelf" className="bookshelf" />
-        <div className="books-overlay">
+      <div className="bookshelf">
+        <div className="books-container">
           {books.map((book, index) => (
-            <div 
-              key={book.id} 
+            <div
+              key={book.id}
               className="book"
               style={{
-                backgroundImage: `url(${process.env.PUBLIC_URL}/spines/${book.spineImage})`,
-                width: `${bookDimensions.width}px`,
-                height: `${bookDimensions.height}px`,
-                position: 'absolute',
-                left: `${index * bookDimensions.width}px`,
-                bottom: '0'
+                backgroundColor: book.color,
+                width: `${bookWidth}px`,
+                height: `${bookHeight}px`,
+                left: `${index * (bookWidth + bookSpacing)}px`
               }}
               onClick={() => setSelectedBook(book)}
             >
-              <div className="spine">{book.spineTitle}</div>
+              <div className="spine-text">{book.author}</div>
             </div>
           ))}
         </div>
       </div>
-      <div className="input-container">
+      <div className="controls">
         <input
-          className="book-input"
           type="text"
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <input
-          className="book-input"
           type="text"
-          placeholder="Spine"
-          value={spineTitle}
-          onChange={(e) => setSpineTitle(e.target.value)}
+          placeholder="Author"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
         />
         <select
-          className="book-input"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         >
-          <option value="spooky">Spooky</option>
-          <option value="fantasy">Fantasy</option>
-          <option value="soft">Soft</option>
-          <option value="colorful">Colorful</option>
+          {Object.keys(categories).map(cat => (
+            <option key={cat} value={cat}>{cat}</option>
+          ))}
         </select>
-        <button onClick={addBook} className="add-button">Add</button>
+        <button onClick={addBook}>Add Book</button>
       </div>
       {selectedBook && (
         <div className="book-details">
           <h2>{selectedBook.title}</h2>
-          <input 
-            type="range" 
-            min="0" 
-            max="100" 
+          <p>Author: {selectedBook.author}</p>
+          <input
+            type="range"
+            min="0"
+            max="100"
             value={selectedBook.progress}
             onChange={(e) => updateProgress(selectedBook.id, parseInt(e.target.value))}
           />
