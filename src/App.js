@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import bookshelfImage from './bookshelf.jpg';  // Import the image
 
 function App() {
   const [books, setBooks] = useState(() => {
@@ -26,10 +25,6 @@ function App() {
   useEffect(() => {
     localStorage.setItem('books', JSON.stringify(books));
   }, [books]);
-
-  useEffect(() => {
-    console.log('Bookshelf image path:', bookshelfImage);
-  }, []);
 
   const addBook = () => {
     if (title.trim() && author.trim()) {
@@ -62,7 +57,7 @@ function App() {
     <div className="App">
       <div className="bookshelf">
         <img 
-          src={bookshelfImage}  // Use the imported image
+          src={`${process.env.PUBLIC_URL}/bookshelf.jpg`}
           alt="Bookshelf" 
           className="bookshelf-image" 
         />
