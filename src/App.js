@@ -11,8 +11,8 @@ function App() {
   const [category, setCategory] = useState('spooky');
   const [selectedBook, setSelectedBook] = useState(null);
 
-  const bookWidth = 15; // Reduced width of each book spine in pixels
-  const bookHeight = 80; // Reduced height of each book spine in pixels
+  const bookWidth = 10; // Further reduced width of each book spine in pixels
+  const bookHeight = 60; // Further reduced height of each book spine in pixels
   const bookSpacing = 1; // Small space between books in pixels
 
   const categories = {
