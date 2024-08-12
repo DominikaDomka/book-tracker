@@ -11,7 +11,7 @@ function App() {
   const [category, setCategory] = useState("spooky");
   const [selectedBook, setSelectedBook] = useState(null);
 
-  const bookDimensions = { width: 20, height: 120 }; // Reduced width, slightly increased height
+  const bookDimensions = { width: 16, height: 85 };
 
   const spineCount = {
     spooky: 10,
